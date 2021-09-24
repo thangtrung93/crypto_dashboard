@@ -3,6 +3,7 @@ import pandas as pd
 import time
 import os
 import psycopg2
+import streamlit as st
 
 def create_table():
 
@@ -29,7 +30,7 @@ def create_table():
     conn.close()
 
 def get_stablecoin_list_binance():
-    create_table()
+    # create_table()
     l_stablecoin = ["BNB", "BTC"]
 
     url = "https://www.binance.com/en/markets"
@@ -52,5 +53,6 @@ def get_stablecoin_list_binance():
     df_stablecoin = pd.DataFrame(l_stablecoin_result, columns=["stablecoin"])
     driver.quit()
 
-    cfunc.delete_file("a_data_common_parameter/stablecoin_list", "stablecoin_list_binance")
-    cfunc.write_result(df_stablecoin, "a_data_common_parameter/stablecoin_list", "stablecoin_list_binance")
+    st.table(df_stablecoin)
+    # cfunc.delete_file("a_data_common_parameter/stablecoin_list", "stablecoin_list_binance")
+    # cfunc.write_result(df_stablecoin, "a_data_common_parameter/stablecoin_list", "stablecoin_list_binance")
