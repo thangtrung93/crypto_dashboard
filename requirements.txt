@@ -4,6 +4,6 @@ markdown
 datetime
 pandas
 selenium
-binance
+python-binance
 cryptocompare
 requests
