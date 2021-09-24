@@ -33,7 +33,7 @@ def get_stablecoin_list_binance():
     l_stablecoin = ["BNB", "BTC"]
 
     url = "https://www.binance.com/en/markets"
-    driver = cfunc.get_driver_none_img()
+    driver = cfunc.get_driver_heroku()
     driver.get(url)
     time.sleep(1)
 

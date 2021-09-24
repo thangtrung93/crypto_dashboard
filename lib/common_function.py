@@ -3,6 +3,14 @@ import os.path
 from selenium import webdriver
 import pandas as pd
 
+def get_driver_heroku():
+    chorme_options = webdriver.ChromeOptions()
+    chorme_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    chorme_options.add_argument("--headless")
+    chorme_options.add_argument("--disable-dev-shm-useage")
+    chorme_options.add_argument("--no-sandbox")
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chorme_options)
+    return driver
 
 def get_driver_chrome():
     driver = webdriver.Chrome(executable_path="D:/Programs/chromedriver_win32/chromedriver.exe")
