@@ -3,3 +3,10 @@ typing
 markdown
 datetime
 pandas
+selenium
+binance
+cryptocompare
+requests
+os
+re
+time
