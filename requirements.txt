@@ -7,3 +7,4 @@ selenium
 python-binance
 cryptocompare
 requests
+psycopg2
