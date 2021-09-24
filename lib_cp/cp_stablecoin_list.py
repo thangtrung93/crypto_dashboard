@@ -48,7 +48,7 @@ def get_stablecoin_list_binance():
     for fiat_coin in driver.find_elements_by_xpath('//*[contains(@id, "market_3rd_filter_FIAT")]'):
         l_stablecoin.append(fiat_coin.text)
 
-    l_stablecoin_result = [i for i in l_stablecoin if i != "All"]
+    l_stablecoin_result = [i for i in l_stablecoin if (not i in ["", "All"])]
 
     df_stablecoin = pd.DataFrame(l_stablecoin_result, columns=["stablecoin"])
     driver.quit()
