@@ -34,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib_cp/cp_stablecoin_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="55" column="26" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="26" />
+            <state relative-caret-position="325">
+              <caret line="47" column="93" selection-start-line="47" selection-start-column="93" selection-end-line="47" selection-end-column="93" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -267,8 +267,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib_cp/cp_stablecoin_list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="55" column="26" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="26" />
+        <state relative-caret-position="325">
+          <caret line="47" column="93" selection-start-line="47" selection-start-column="93" selection-end-line="47" selection-end-column="93" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>

@@ -38,14 +38,14 @@ def get_stablecoin_list_binance():
     driver.get(url)
     time.sleep(1)
 
-    driver.find_element_by_id("market_filter_spot_ALTS").click()
+    driver.find_element_by_id("tab-ALTS").click()
     time.sleep(1)
-    for alt_coin in driver.find_elements_by_xpath('//*[contains(@id, "market_3rd_filter_ALTS")]'):
+    for alt_coin in driver.find_elements_by_xpath('//*[contains(@id, "market_trade_list_item")]'):
         l_stablecoin.append(alt_coin.text)
 
-    driver.find_element_by_id("market_filter_spot_FIAT").click()
+    driver.find_element_by_id("tab-FIAT").click()
     time.sleep(1)
-    for fiat_coin in driver.find_elements_by_xpath('//*[contains(@id, "market_3rd_filter_FIAT")]'):
+    for fiat_coin in driver.find_elements_by_xpath('//*[contains(@id, "market_trade_list_item")]'):
         l_stablecoin.append(fiat_coin.text)
 
     l_stablecoin_result = [i for i in l_stablecoin if i != "All"]
