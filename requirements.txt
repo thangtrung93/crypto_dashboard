@@ -7,6 +7,3 @@ selenium
 binance
 cryptocompare
 requests
-os
-re
-time
