@@ -8,3 +8,4 @@ python-binance
 cryptocompare
 requests
 psycopg2
+sqlalchemy
