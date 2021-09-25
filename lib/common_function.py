@@ -2,6 +2,8 @@ from datetime import date
 import os.path
 from selenium import webdriver
 import pandas as pd
+from sqlalchemy import create_engine
+
 
 def get_driver_heroku():
     chorme_options = webdriver.ChromeOptions()
@@ -151,4 +153,12 @@ def find_nth(haystack, needle, n):
     return start
 
 
-
+def get_engine():
+    host = "ec2-44-197-94-126.compute-1.amazonaws.com"
+    database = "d205k31v0v76jn"
+    user = "gqlvygaoovqdfa"
+    port = "5432"
+    password = "3126632bee48c5cb0959e718425b340b01681bfd1e55a1c18af39238585f84eb"
+    database_url = f"postgresql://{user}:{password}@{host}:{port}/{database}"
+    engine = create_engine(database_url, echo=False)
+    return engine

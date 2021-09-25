@@ -4,6 +4,7 @@ import cryptocompare as cc
 import pandas as pd
 import requests
 from binance import Client, ThreadedWebsocketManager, ThreadedDepthCacheManager
+from sqlalchemy import create_engine
 
 
 # get stock list
@@ -59,6 +60,10 @@ def get_coin_list_mexc():
     df_coin_list.rename(columns={"symbol": "coin", "vcoinName": "coin_short"}, inplace=True)
 
     # write result
-    cfunc.delete_file("a_data_common_parameter/coin_list", "coin_list_mexc")
-    cfunc.write_result(df_coin_list, "a_data_common_parameter/coin_list", "coin_list_mexc")
+    # cfunc.delete_file("a_data_common_parameter/coin_list", "coin_list_mexc")
+    # cfunc.write_result(df_coin_list, "a_data_common_parameter/coin_list", "coin_list_mexc")
+
+    engine = cfunc.get_engine()
+    df_coin_list.to_sql("df_coin_list_mexc", con=engine, if_exists='append')
+    engine.execute("alter table df_coin_list_mexc add primary key(coin)")
 
