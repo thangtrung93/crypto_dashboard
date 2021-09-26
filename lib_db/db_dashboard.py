@@ -34,7 +34,7 @@ def get_dashboard(slt_source, current_date):
         try:
             df_result = dd_coin_price.get_content_coin_price_mexc(url, coin, current_date)
             df = df.append(df_result)
-            print(coin)
+            # print(coin)
             time.sleep(0.00001)
         except:
             pass
@@ -45,7 +45,7 @@ def get_dashboard(slt_source, current_date):
     df_coin_price_sort[["price_close", "volume"]] = df_coin_price_sort[["price_close", "volume"]].astype(float)
 
     df_coin_price_sort["price_shift_1"] = df_coin_price_sort.groupby(["coin"])["price_close"].shift(1)
-    df_coin_price_sort.fillna(0, inplace=True)
+    # df_coin_price_sort.fillna(0, inplace=True)
 
     df_coin_price_tail = df_coin_price_sort.groupby("coin").tail(1).reset_index(drop=True).copy()
     df_coin_price_tail["price_change_1"] = df_coin_price_tail.apply(lambda x: round((x["price_close"] /
@@ -55,7 +55,7 @@ def get_dashboard(slt_source, current_date):
     df_coin_price_tail.fillna(0, inplace=True)
     df_coin_price_tail.replace([np.inf, -np.inf], 0, inplace=True)
 
-    l_col = ["coin", "date", "price_close", "volume", "market_cap"]
+    l_col = ["coin", "date", "price_close", "volume", "market_cap", "price_change_1"]
     df_coin_price_result = df_coin_price_tail[l_col].copy()
     df_coin_price_result = df_coin_price_result.merge(df_coin[["coin", "coin_short"]], how="left", on="coin")
     return df_coin_price_result
