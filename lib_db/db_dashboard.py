@@ -22,6 +22,7 @@ def get_dashboard(slt_source, current_date):
     df_coin_price_previous_name = f"df_coin_price_{slt_source}"
     df_coin_price_previous = pd.read_sql_query(sql=f"select coin, date, price_close from {df_coin_price_previous_name}",
                                                con=engine)
+    df_coin_price_previous[["price_close", "volume"]] = df_coin_price_previous[["price_close", "volume"]].astype(float)
 
     # get today coin price
     base_url = "https://www.mexc.com"
@@ -44,7 +45,6 @@ def get_dashboard(slt_source, current_date):
 
     df_coin_price_sort["price_shift_1"] = df_coin_price_sort.groupby(["coin"])["price_close"].shift(1)
     df_coin_price_sort.fillna(0, inplace=True)
-    df_coin_price_sort[["price_close", "volume"]] = df_coin_price_sort[["price_close", "volume"]].astype(float)
 
     df_coin_price_tail = df_coin_price_sort.groupby("coin").tail(1).reset_index(drop=True).copy()
     df_coin_price_tail["price_change_1"] = df_coin_price_tail.apply(lambda x: round((x["price_close"] /
