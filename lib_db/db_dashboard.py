@@ -58,4 +58,6 @@ def get_dashboard(slt_source, current_date):
     df_coin_price_result = df_coin_price_tail[l_col].copy()
     df_coin_price_result = df_coin_price_result.merge(df_coin[["coin", "coin_short"]], how="left", on="coin")
     df_coin_price_result.sort_values(["price_change_1"], ascending=False, inplace=True)
-    return df_coin_price_result
+    df_coin_price_format = df_coin_price_result.style.format('{:,.0f}', subset=["volume", "market_cap", "price_change_1"])\
+        .bar(subset=["price_change_1"], align='mid', color=['#d65f5f', '#5fba7d'])
+    return df_coin_price_format
