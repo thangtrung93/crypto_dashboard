@@ -10,6 +10,7 @@ import lib_dd.dd_coin_price as dd_coin_price
 import numpy as np
 
 
+
 def get_dashboard(slt_source, current_date):
     # get coin list
     df_coin_list_name = f"df_coin_list_{slt_source}"
@@ -43,7 +44,6 @@ def get_dashboard(slt_source, current_date):
     df_coin_price_current = df_coin_price_current.append(df_coin_price_previous)
     df_coin_price_sort = df_coin_price_current.sort_values(["coin", "date"]).reset_index(drop=True)
     df_coin_price_sort[["price_close", "volume"]] = df_coin_price_sort[["price_close", "volume"]].astype(float)
-
     df_coin_price_sort["price_shift_1"] = df_coin_price_sort.groupby(["coin"])["price_close"].shift(1)
     # df_coin_price_sort.fillna(0, inplace=True)
 
@@ -58,4 +58,5 @@ def get_dashboard(slt_source, current_date):
     l_col = ["coin", "date", "price_close", "volume", "market_cap", "price_change_1"]
     df_coin_price_result = df_coin_price_tail[l_col].copy()
     df_coin_price_result = df_coin_price_result.merge(df_coin[["coin", "coin_short"]], how="left", on="coin")
+    df_coin_price_result.sort_values(["price_change_1"], ascending=False, inplace=True)
     return df_coin_price_result

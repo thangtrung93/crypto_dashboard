@@ -6,6 +6,8 @@ import cryptocompare as cc
 from binance import Client, ThreadedWebsocketManager, ThreadedDepthCacheManager
 import pytz
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util import Retry
 
 
 # binance
