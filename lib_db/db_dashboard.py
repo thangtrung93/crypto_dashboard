@@ -20,7 +20,7 @@ def get_dashboard(slt_source, current_date):
 
     # get coin price in the last day
     df_coin_price_previous_name = f"df_coin_price_{slt_source}"
-    df_coin_price_previous = pd.read_sql_query(sql=f"select coin, date, price_close from {df_coin_price_previous_name}",
+    df_coin_price_previous = pd.read_sql_query(sql=f"select coin, date, price_close, volume from {df_coin_price_previous_name}",
                                                con=engine)
     df_coin_price_previous[["price_close", "volume"]] = df_coin_price_previous[["price_close", "volume"]].astype(float)
 
