@@ -64,6 +64,6 @@ def get_coin_list_mexc():
     # cfunc.write_result(df_coin_list, "a_data_common_parameter/coin_list", "coin_list_mexc")
 
     engine = cfunc.get_engine()
-    df_coin_list.to_sql("df_coin_list_mexc", con=engine, if_exists='append')
+    df_coin_list.to_sql("df_coin_list_mexc", con=engine, if_exists='replace')
     engine.execute("alter table df_coin_list_mexc add primary key(coin)")
 

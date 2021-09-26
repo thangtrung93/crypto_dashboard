@@ -58,6 +58,6 @@ def get_stablecoin_list_binance():
     st.table(df_stablecoin)
 
     engine = cfunc.get_engine()
-    df_stablecoin.to_sql("df_stablecoin", con=engine, if_exists='append')
+    df_stablecoin.to_sql("df_stablecoin", con=engine, if_exists='replace')
     # cfunc.delete_file("a_data_common_parameter/stablecoin_list", "stablecoin_list_binance")
     # cfunc.write_result(df_stablecoin, "a_data_common_parameter/stablecoin_list", "stablecoin_list_binance")

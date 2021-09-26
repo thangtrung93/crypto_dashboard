@@ -149,12 +149,6 @@ def get_coin_price_mexc(slt_source, l_date):
             except:
                 pass
 
-        # folder = "a_data_daily_coin_price/" + slt_source
-        # file_name = "stock_price_" + str(date_target.strftime('%Y%m%d'))
-        # print(date_target)
-        #
-        # cfunc.delete_file(folder=folder, para1=file_name)
-        # cfunc.write_result(df, folder, file_name)
         df.to_sql("df_coin_price_mexc", con=engine, if_exists='replace')
         engine.execute("alter table df_coin_price_mexc add primary key(coin)")
 
