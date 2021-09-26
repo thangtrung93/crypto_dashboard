@@ -91,6 +91,6 @@ def main():
             df_coin_price_result = db_dashboard.get_dashboard(slt_source, current_date)
             st.dataframe(df_coin_price_result)
 
-                
+
 if __name__ == '__main__':
     main()

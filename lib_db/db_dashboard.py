@@ -47,7 +47,8 @@ def get_dashboard(slt_source, current_date):
 
     df_coin_price_tail = df_coin_price_sort.groupby("coin").tail(1).reset_index(drop=True).copy()
     df_coin_price_tail["price_change_1"] = df_coin_price_tail.apply(lambda x: round((x["price_close"] /
-                                                                                     x["price_shift_1"] - 1) * 100, 1))
+                                                                                     x["price_shift_1"] - 1) * 100, 1),
+                                                                    axis=1)
     df_coin_price_tail["market_cap"] = df_coin_price_tail["price_close"] * df_coin_price_tail["volume"]
     df_coin_price_tail.fillna(0, inplace=True)
     df_coin_price_tail.replace([np.inf, -np.inf], 0, inplace=True)
