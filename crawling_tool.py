@@ -89,7 +89,7 @@ def main():
             current_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
             st.text(f"update at: {current_time}")
             df_coin_price_result = db_dashboard.get_dashboard(slt_source, current_date)
-            st.dataframe(df_coin_price_result)
+            st.table(df_coin_price_result)
 
 
 if __name__ == '__main__':

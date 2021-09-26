@@ -10,7 +10,6 @@ import lib_dd.dd_coin_price as dd_coin_price
 import numpy as np
 
 
-
 def get_dashboard(slt_source, current_date):
     # get coin list
     df_coin_list_name = f"df_coin_list_{slt_source}"
