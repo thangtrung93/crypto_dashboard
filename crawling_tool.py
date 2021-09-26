@@ -8,7 +8,8 @@ from PIL import Image
 
 # @st.echo
 d_menu = {"daily_data": "Daily Data",
-          "common_parameter": "Common Parameter"
+          "common_parameter": "Common Parameter",
+          "dashboard": "Dashboard"
           }
 
 opt_daily_data = ["coin_price"]
@@ -74,6 +75,11 @@ def main():
             if bt_download:
                 if slt_source == "binance":
                     cp_stablecoin_list.get_stablecoin_list_binance()
+
+    # dashboard
+    elif menu == d_menu['dashboard']:
+        st.markdown('<h1 style="font-weight:bold">{}</h1>'.format(d_menu['dashboard']), unsafe_allow_html=True)
+        slt_tag = st.selectbox(label="Select Source", options=opt_source)
 
 
 if __name__ == '__main__':

@@ -131,7 +131,10 @@ def get_coin_price_mexc(slt_source, l_date):
     url = f"{base_url}{end_point}"
 
     # get coin list
-    df_coin = pd.read_csv("D:/OneDrive/Crypto/a_data_common_parameter/coin_list/coin_list_mexc.csv", sep=";")
+    engine = cfunc.get_engine()
+    df_coin_list_name = f"df_coin_list_{slt_source}"
+    df_coin = pd.read_sql_query(sql=f"select coin, coin_short from {df_coin_list_name}", con=engine)
+    # df_coin = pd.read_csv("D:/OneDrive/Crypto/a_data_common_parameter/coin_list/coin_list_mexc.csv", sep=";")
     l_coin = df_coin["coin"].tolist()
     l_coin.sort()
 
@@ -146,12 +149,14 @@ def get_coin_price_mexc(slt_source, l_date):
             except:
                 pass
 
-        folder = "a_data_daily_coin_price/" + slt_source
-        file_name = "stock_price_" + str(date_target.strftime('%Y%m%d'))
-        print(date_target)
-
-        cfunc.delete_file(folder=folder, para1=file_name)
-        cfunc.write_result(df, folder, file_name)
+        # folder = "a_data_daily_coin_price/" + slt_source
+        # file_name = "stock_price_" + str(date_target.strftime('%Y%m%d'))
+        # print(date_target)
+        #
+        # cfunc.delete_file(folder=folder, para1=file_name)
+        # cfunc.write_result(df, folder, file_name)
+        df.to_sql("df_coin_price_mexc", con=engine, if_exists='replace')
+        engine.execute("alter table df_coin_price_mexc add primary key(coin)")
 
 
 # cryptocompare
