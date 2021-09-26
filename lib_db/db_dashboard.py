@@ -38,7 +38,7 @@ def get_dashboard(slt_source, current_date):
         except:
             pass
 
-    df_coin_price_current = df[["coin", "date", "price_close"]].copy()
+    df_coin_price_current = df[["coin", "date", "price_close", "volume"]].copy()
     df_coin_price_current = df_coin_price_current.append(df_coin_price_previous)
     df_coin_price_sort = df_coin_price_current.sort_values(["coin", "date"]).reset_index(drop=True)
 
