@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2ccabe2-3643-4617-9134-91b4b80144d5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/crawling_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling_tool.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib_db/db_dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib_db/db_dashboard.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib_db/db_dashboard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="51" column="68" selection-start-line="51" selection-start-column="68" selection-end-line="51" selection-end-column="68" />
+            <state relative-caret-position="408">
+              <caret line="52" column="103" lean-forward="true" selection-start-line="52" selection-start-column="103" selection-end-line="52" selection-end-column="103" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -324,8 +323,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib_db/db_dashboard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="51" column="68" selection-start-line="51" selection-start-column="68" selection-end-line="51" selection-end-column="68" />
+        <state relative-caret-position="408">
+          <caret line="52" column="103" lean-forward="true" selection-start-line="52" selection-start-column="103" selection-end-line="52" selection-end-column="103" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

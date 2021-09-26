@@ -44,6 +44,7 @@ def get_dashboard(slt_source, current_date):
 
     df_coin_price_sort["price_shift_1"] = df_coin_price_sort.groupby(["coin"])["price_close"].shift(1)
     df_coin_price_sort.fillna(0, inplace=True)
+    df_coin_price_sort[["price_close", "volume"]] = df_coin_price_sort[["price_close", "volume"]].astype(float)
 
     df_coin_price_tail = df_coin_price_sort.groupby("coin").tail(1).reset_index(drop=True).copy()
     df_coin_price_tail["price_change_1"] = df_coin_price_tail.apply(lambda x: round((x["price_close"] /
