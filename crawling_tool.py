@@ -8,6 +8,7 @@ from PIL import Image
 import lib_db.db_dashboard as db_dashboard
 import time
 
+
 # @st.echo
 d_menu = {"common_parameter": "Common Parameter",
           "daily_data": "Daily Data",
@@ -85,20 +86,18 @@ def main():
         current_date = date.today()
         st.text("Today: " + current_date.strftime("%Y/%m/%d"))
         slt_source = st.selectbox(label="Select Source", options=opt_source)
-        bt_run = st.button("Run")
-        if bt_run:
-            i = 0
-            while i < 2:
-                st_table = st.empty()
-                st_current_time = st.empty()
 
+        bt_run = st.button("Run")
+        st_current_time = st.empty()
+        st_table = st.empty()
+        if bt_run:
+            for i in range(2):
                 current_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
                 st_current_time.text(f"update at: {current_time}, id: {str(i)}")
-
                 df_coin_price_result = db_dashboard.get_dashboard(slt_source, current_date)
                 st_table.table(df_coin_price_result)
-                i += 1
                 time.sleep(60)
+
 
 
 if __name__ == '__main__':
