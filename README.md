@@ -1,2 +1,2 @@
 # Crypto Dashboard
-## Tracking the performance of coin pricein the current date
+## Tracking the performance of coin price in the current date
