@@ -1,16 +1,18 @@
 import streamlit as st
 from datetime import datetime, date, timedelta
 import lib.common_function as cfunc
+import lib_note.note as note
 import lib_dd.dd_coin_price as dd_coin_price
 import lib_cp.cp_coin_list as cp_coin_list
 import lib_cp.cp_stablecoin_list as cp_stablecoin_list
-from PIL import Image
 import lib_db.db_dashboard as db_dashboard
 import time
 
 
+
 # @st.echo
-d_menu = {"common_parameter": "Common Parameter",
+d_menu = {"note": "NOTE",
+          "common_parameter": "Common Parameter",
           "daily_data": "Daily Data",
           "dashboard": "Dashboard"
           }
@@ -29,7 +31,11 @@ def main():
     menu = st.sidebar.radio("Go to", list(d_menu.values()))
 
     # common parameter
-    if menu == d_menu['common_parameter']:
+    if menu == d_menu['note']:
+        st.markdown('<h1 style="font-weight:bold">{}</h1>'.format(d_menu['note']), unsafe_allow_html=True)
+        note.get_note()
+
+    elif menu == d_menu['common_parameter']:
         st.markdown('<h1 style="font-weight:bold">{}</h1>'.format(d_menu['common_parameter']+" Crawling"), unsafe_allow_html=True)
         slt_tag = st.selectbox(label="Select Tag", options=opt_common_parameter)
 
@@ -41,8 +47,6 @@ def main():
                     cp_coin_list.get_coin_list_binance()
                 elif slt_source == "mexc":
                     cp_coin_list.get_coin_list_mexc()
-                elif slt_source == "cryptocompare":
-                    cp_coin_list.get_coin_list_cryptocompare()
 
         elif slt_tag == "stablecoin_list":
             slt_source = st.selectbox(label="Select Source", options=opt_source)
@@ -75,10 +79,6 @@ def main():
                 elif slt_source == "mexc":
                     dd_coin_price.get_coin_price_mexc(slt_source, l_date)
                     st.write('success')
-                elif slt_source == "cryptocompare":
-                    dd_coin_price.get_coin_price_cryptocompare(slt_source, l_date)
-                    st.write('success')
-
 
     # dashboard
     elif menu == d_menu['dashboard']:
