@@ -1,1 +1,1 @@
-﻿web: sh setup.sh && streamlit run crawling_tool.py
+﻿web: sh setup.sh && streamlit run crypto_dashboard.py
