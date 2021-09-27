@@ -1,11 +1,6 @@
 import lib.common_function as cfunc
 import pandas as pd
-from datetime import date, datetime, timedelta
 import time
-import cryptocompare as cc
-from binance import Client, ThreadedWebsocketManager, ThreadedDepthCacheManager
-import pytz
-import requests
 import lib_dd.dd_coin_price as dd_coin_price
 import numpy as np
 

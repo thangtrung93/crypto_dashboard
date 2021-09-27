@@ -11,3 +11,4 @@ psycopg2
 sqlalchemy
 urllib3
 pytz
+numpy
