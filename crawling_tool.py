@@ -17,7 +17,7 @@ d_menu = {"common_parameter": "Common Parameter",
 
 opt_daily_data = ["coin_price"]
 opt_common_parameter = ["coin_list", "stablecoin_list"]
-opt_source = ["binance", "mexc", "cryptocompare"]
+opt_source = ["binance", "mexc"]
 
 # img = Image.open("D:/OneDrive/Crypto/Cardano.ico")
 # st.set_page_config(page_icon=img)

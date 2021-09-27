@@ -1,30 +1,13 @@
 from lib import common_function as cfunc
 import re
-import cryptocompare as cc
 import pandas as pd
 import requests
 from binance import Client, ThreadedWebsocketManager, ThreadedDepthCacheManager
-from sqlalchemy import create_engine
 
 
 # get stock list
 def convert_col_name(col_name):
     return '_'.join(re.findall('[A-Z][a-z]*', col_name)).lower()
-
-
-def get_coin_list_cryptocompare():
-    js_coin_list = cc.get_coin_list()
-    df_coin_list = pd.DataFrame.from_dict(js_coin_list)
-    df_coin_list_result = df_coin_list.T.reset_index(drop=True).copy()
-
-    # convert column name
-    l_col = df_coin_list_result.columns.tolist()
-    df_coin_list_result.columns = [convert_col_name(i) for i in l_col]
-    df_coin_list_result.rename(columns={"symbol": "coin"}, inplace=True)
-
-    # write result
-    cfunc.delete_file("a_data_common_parameter/coin_list", "coin_list_cryptocompare")
-    cfunc.write_result(df_coin_list_result, "a_data_common_parameter/coin_list", "coin_list_cryptocompare")
 
 
 def get_coin_list_binance():
@@ -35,8 +18,8 @@ def get_coin_list_binance():
     df_coin_list = pd.DataFrame(l_coin_list)[["symbol"]].rename(columns={"symbol": "coin"})
 
     # short coin name
-    df_stablecoin_list = pd.read_csv("D:/OneDrive/Crypto/a_data_common_parameter/"
-                                     "stablecoin_list/stablecoin_list_binance.csv", sep=";")
+    engine = cfunc.get_engine()
+    df_stablecoin_list = pd.read_sql_query("select * from df_stablecoin")
     l_stablecoin = df_stablecoin_list["stablecoin"].tolist()
 
     df_coin_list["check"] = df_coin_list["coin"].apply(lambda x: [x[-3:]] + [x[-4:]])
@@ -46,8 +29,11 @@ def get_coin_list_binance():
     df_coin_list_result = df_coin_list[["coin", "coin_short"]].copy()
 
     # write result
-    cfunc.delete_file("a_data_common_parameter/coin_list", "coin_list_binance")
-    cfunc.write_result(df_coin_list_result, "a_data_common_parameter/coin_list", "coin_list_binance")
+    # cfunc.delete_file("a_data_common_parameter/coin_list", "coin_list_binance")
+    # cfunc.write_result(df_coin_list_result, "a_data_common_parameter/coin_list", "coin_list_binance")
+
+    df_coin_list.to_sql("df_coin_list_binance", con=engine, if_exists='replace')
+    engine.execute("alter table df_coin_list_binance add primary key(coin)")
 
 
 def get_coin_list_mexc():

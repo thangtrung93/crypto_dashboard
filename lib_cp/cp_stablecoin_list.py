@@ -1,34 +1,7 @@
 from lib import common_function as cfunc
 import pandas as pd
 import time
-import os
-import psycopg2
 import streamlit as st
-
-# def create_table():
-#
-#     DATABASE_URL = os.environ['postgres://gqlvygaoovqdfa:3126632bee48c5cb0959e718425b340b01681bfd1e55a1c' \
-#                               '18af39238585f84eb@ec2-44-197-94-126.compute-1.amazonaws.com:5432/d205k31v0v76jn']
-#
-#     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-#
-#     cursor = conn.cursor()
-#
-#     # Creating table as per requirement
-#     sql = '''CREATE TABLE EMPLOYEE(
-#        FIRST_NAME CHAR(20) NOT NULL,
-#        LAST_NAME CHAR(20),
-#        AGE INT,
-#        SEX CHAR(1),
-#        INCOME FLOAT
-#     )'''
-#
-#     cursor.execute(sql)
-#     print("Table created successfully........")
-#     conn.commit()
-#     # Closing the connection
-#     conn.close()
-
 
 
 def get_stablecoin_list_binance():
