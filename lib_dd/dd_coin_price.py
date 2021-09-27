@@ -32,9 +32,7 @@ def get_content_coin_price_binance(url, coin, date_target):
 
 def get_coin_price_binance(slt_source, l_date):
     # url
-    base_url = "https://www.binance.com"
-    end_point = "/api/v3/klines"
-    url = f"{base_url}{end_point}"
+    url = cfunc.get_coin_price_api_url(slt_source)
 
     # get coin list
     engine = cfunc.get_engine()
@@ -81,9 +79,7 @@ def get_content_coin_price_mexc(url, coin, date_target):
 
 def get_coin_price_mexc(slt_source, l_date):
     # url
-    base_url = "https://www.mexc.com"
-    end_point = "/open/api/v2/market/kline"
-    url = f"{base_url}{end_point}"
+    url = cfunc.get_coin_price_api_url(slt_source)
 
     # get coin list
     engine = cfunc.get_engine()

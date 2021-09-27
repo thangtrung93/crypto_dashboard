@@ -162,3 +162,17 @@ def get_engine():
     database_url = f"postgresql://{user}:{password}@{host}:{port}/{database}"
     engine = create_engine(database_url, echo=False)
     return engine
+
+
+def get_coin_price_api_url(source):
+    if source == "binance":
+        base_url = "https://www.binance.com"
+        end_point = "/api/v3/klines"
+        url = f"{base_url}{end_point}"
+    elif source == "mexc":
+        base_url = "https://www.mexc.com"
+        end_point = "/open/api/v2/market/kline"
+        url = f"{base_url}{end_point}"
+    return url
+
+

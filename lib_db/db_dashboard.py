@@ -18,21 +18,28 @@ def get_dashboard(slt_source, current_date):
     df_coin_price_previous = pd.read_sql_query(sql=f"select coin, date, price_close, volume from {df_coin_price_previous_name}",
                                                con=engine)
 
-
     # get today coin price
-    base_url = "https://www.mexc.com"
-    end_point = "/open/api/v2/market/kline"
-    url = f"{base_url}{end_point}"
+    url = cfunc.get_coin_price_api_url(slt_source)
 
     df = pd.DataFrame()
-    for coin in l_coin:
-        try:
-            df_result = dd_coin_price.get_content_coin_price_mexc(url, coin, current_date)
-            df = df.append(df_result)
-            # print(coin)
-            time.sleep(0.00001)
-        except:
-            pass
+    if slt_source == "binance":
+        for coin in l_coin:
+            try:
+                df_result = dd_coin_price.get_content_coin_price_binance(url, coin, current_date)
+                df = df.append(df_result)
+                # print(coin)
+                time.sleep(0.00001)
+            except:
+                pass
+    elif slt_source == "mexc":
+        for coin in l_coin:
+            try:
+                df_result = dd_coin_price.get_content_coin_price_mexc(url, coin, current_date)
+                df = df.append(df_result)
+                # print(coin)
+                time.sleep(0.00001)
+            except:
+                pass
 
     df_coin_price_current = df[["coin", "date", "price_close", "volume"]].copy()
     df_coin_price_current = df_coin_price_current.append(df_coin_price_previous)
