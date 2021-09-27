@@ -32,7 +32,7 @@ def get_coin_list_binance():
     # cfunc.delete_file("a_data_common_parameter/coin_list", "coin_list_binance")
     # cfunc.write_result(df_coin_list_result, "a_data_common_parameter/coin_list", "coin_list_binance")
 
-    df_coin_list.to_sql("df_coin_list_binance", con=engine, if_exists='replace')
+    df_coin_list_result.to_sql("df_coin_list_binance", con=engine, if_exists='replace')
     engine.execute("alter table df_coin_list_binance add primary key(coin)")
 
 
