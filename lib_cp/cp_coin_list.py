@@ -19,7 +19,7 @@ def get_coin_list_binance():
 
     # short coin name
     engine = cfunc.get_engine()
-    df_stablecoin_list = pd.read_sql_query("select * from df_stablecoin")
+    df_stablecoin_list = pd.read_sql_query("select * from df_stablecoin", con=engine)
     l_stablecoin = df_stablecoin_list["stablecoin"].tolist()
 
     df_coin_list["check"] = df_coin_list["coin"].apply(lambda x: [x[-3:]] + [x[-4:]])
