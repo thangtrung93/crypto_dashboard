@@ -91,12 +91,13 @@ def main():
         st_current_time = st.empty()
         st_table = st.empty()
         if bt_run:
-            for i in range(40):
-                current_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
-                st_current_time.text(f"update at: {current_time}, id: {str(i)}")
-                df_coin_price_result = db_dashboard.get_dashboard(slt_source, current_date)
-                st_table.table(df_coin_price_result)
-                time.sleep(600)
+            # for i in range(40):
+            current_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+            st_current_time.text(f"update at: {current_time}")
+            # st_current_time.text(f"update at: {current_time}, id: {str(i)}")
+            df_coin_price_result = db_dashboard.get_dashboard(slt_source, current_date)
+            st_table.table(df_coin_price_result)
+            # time.sleep(600)
 
 
 if __name__ == '__main__':
