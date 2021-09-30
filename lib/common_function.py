@@ -166,7 +166,7 @@ def get_engine():
 
 def get_coin_price_api_url(source):
     if source == "binance":
-        base_url = "https://www.binance.com"
+        base_url = "https://api.binance.com"
         end_point = "/api/v3/klines"
         url = f"{base_url}{end_point}"
     elif source == "mexc":
